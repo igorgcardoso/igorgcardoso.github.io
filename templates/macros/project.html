@@ -1,0 +1,48 @@
+{% macro title(page) -%}
+  {{page.title | title }}
+{% endmacro -%}
+
+{% macro type(page, links_allowed=true) -%}
+  {% if page.extra.type -%}
+    {{ page.extra.type }}
+  {% else -%}
+    Unknown type.
+  {% endif -%}
+{% endmacro -%}
+
+{% macro techs(page, sep=", ") -%}{#" • "#}
+  {% if lang == "en" -%}
+    {{ page.date | date(format="%B %Y", locale="en_US") -}}
+  {% else -%}
+    {{ page.date | date(format="%B %Y", locale="pt_BR" ) -}}
+  {% endif -%}
+  <br />
+  {% for tech in page.extra.techs -%}
+    {{ tech }}
+    {% if not loop.last -%}
+      {{ sep }}
+    {% endif -%}
+  {% endfor %}
+{% endmacro -%}
+
+{% macro summary(page, show_urls=true, show_frame=true, show_description=true) -%}
+{% if show_frame -%}
+<div class="py-4 px-8 bg-zinc-900 shadow-lg rounded-lg hover:shadow-xl">
+{% endif -%}
+  <a href="{{ page.permalink | safe }}" class="space-y-4">
+      <div class="space-y-1">
+          <p class="text-sm text-slate-400">{{project::type(page=page, links_allowed=false)}}</p>
+          <div>
+              <h2 class="text-xl font-bold text-blue-600 hover:text-blue-800 visited:text-purple-600">{{project::title(page=page)}}</h2>
+              <p class="text-sm text-slate-400">{{project::techs(page=page, links_allowed=false)}}</p>
+          </div>
+      </div>
+
+      {% for tech in page.extra.techs -%}
+          <span class="rounded-md border-solid border border-blue-200 inline-flex items-center text-blue-300 justify-center px-2 py-1 mr-2 text-xs font-bold"> {{tech}} </span>
+      {% endfor -%}
+  </a>
+{% if show_frame -%}
+</div>
+{% endif -%}
+{% endmacros %}

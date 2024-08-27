@@ -1,0 +1,58 @@
+# The URL the site will be built for
+base_url = "https://igorgcardoso.github.io"
+
+# Whether to automatically compile all Sass files in the sass directory
+compile_sass = false
+
+# Whether to build a search index to be used later on by a JavaScript library
+build_search_index = true
+
+default_language = "pt"
+
+title = "Igor Cardoso"
+
+[markdown]
+# Whether to do syntax highlighting
+# Theme can be customised by setting the `highlight_theme` variable to a theme supported by Zola
+highlight_code = true
+
+[translations]
+Biography = "Biografia"
+Interests = "Interesses"
+Education = "Educação"
+toc = "Tabela de Conteúdos"
+Published = "Publicado"
+Abstract = "Resumo"
+volume = "volume"
+number = "número"
+pages = "páginas"
+
+[languages.en]
+title = "Igor Cardoso"
+
+[languages.en.translations]
+Biography = "Biography"
+Interests = "Interests"
+Education = "Education"
+toc = "Table of Contents"
+Published = "Published"
+Abstract = "Abstract"
+volume = "volume"
+number = "number"
+pages = "pages"
+
+[extra]
+# Put all your custom variables here
+avatar = "static/img/avatar.jpg"
+favicon = "static/img/avatar.jpg"
+title = "Igor Cardoso"
+
+contact_in_index = true
+
+language_codes = ["pt", "en"]
+
+menu_items = [{ path = "#contact", name = "Contato" }]
+
+[extra.en]
+contact_in_index = false
+menu_items = []

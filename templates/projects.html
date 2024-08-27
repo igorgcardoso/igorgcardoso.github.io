@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container max-w-3xl mx-auto px-4">
+  <div class="font-sans py-8">
+    <h1 class="font-bold font-sans break-normal pb-2 text-3xl md:text-4xl">{{ section.title }}</h1>
+  </div>
+    <ul>
+    {% for page in section.pages  -%}
+      <li class="pb-3">
+        <div class="py-4 px-8 bg-zinc-900 shadow-lg rounded-lg hover:shadow-xl">
+            <a href="{{ page.permalink | safe }}" class="space-y-4">
+                <div class="space-y-1">
+                    <p class="text-sm text-slate-400">
+                        {{page.extra.type}}
+                    </p>
+                    <h2 class="text-xl font-bold text-blue-300 hover:text-blue-400 visited:text-purple-400">{{page.title}}</h2>
+                    <div>
+                        <p class="text-sm text-slate-400">{{page.date}}</p>
+                        <p class="text-sm py-1"> {{ page.description | markdown(inline=true) | safe }} </p>
+                    </div>
+                </div>
+
+                {% for tech in page.extra.techs -%}
+                    <span class="rounded-md border-solid border border-blue-200 inline-flex items-center text-blue-300 justify-center px-2 py-1 mr-2 text-xs font-bold"> {{tech}} </span>
+                {% endfor -%}
+            </a>
+      </li>
+    {% endfor -%}
+    </ul>
+</div>
+{% endblock content %}
