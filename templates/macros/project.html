@@ -10,19 +10,14 @@
   {% endif -%}
 {% endmacro -%}
 
-{% macro techs(page, sep=", ") -%}{#" • "#}
+{% macro details(page, sep=", ") -%}{#" • "#}
   {% if lang == "en" -%}
     {{ page.date | date(format="%B %Y", locale="en_US") -}}
   {% else -%}
     {{ page.date | date(format="%B %Y", locale="pt_BR" ) -}}
   {% endif -%}
   <br />
-  {% for tech in page.extra.techs -%}
-    {{ tech }}
-    {% if not loop.last -%}
-      {{ sep }}
-    {% endif -%}
-  {% endfor %}
+  {{page.description}}
 {% endmacro -%}
 
 {% macro summary(page, show_urls=true, show_frame=true, show_description=true) -%}
@@ -34,7 +29,7 @@
           <p class="text-sm text-slate-400">{{project::type(page=page, links_allowed=false)}}</p>
           <div>
               <h2 class="text-xl font-bold text-blue-600 hover:text-blue-800 visited:text-purple-600">{{project::title(page=page)}}</h2>
-              <p class="text-sm text-slate-400">{{project::techs(page=page, links_allowed=false)}}</p>
+              <p class="text-sm text-slate-400">{{project::details(page=page, links_allowed=false)}}</p>
           </div>
       </div>
 

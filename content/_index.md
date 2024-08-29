@@ -3,7 +3,7 @@ title = "Home"
 page_template = "page.html"
 
 [extra]
-title = "Desenvolvedor"
+title = "Desenvolvedor Full Stack"
 
 interests = [
 "Ciência de Dados",
@@ -27,4 +27,4 @@ link = "https://www.linkedin.com/in/igorgcardoso/"
 
 ## Olá, Eu sou Igor Cardoso! 👋
 
-Sou apaixonado por desenvolvimento web, data science e machine learning e desenvolvimento de jogos. Adoro desenvolver aplicações que impactaram e farão a diferença na vida das pessoas.
+Sou apaixonado por desenvolvimento web, data science, machine learning e desenvolvimento de jogos. Adoro desenvolver aplicações que impactarão e farão a diferença na vida das pessoas.
