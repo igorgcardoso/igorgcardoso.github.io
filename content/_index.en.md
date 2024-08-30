@@ -1,6 +1,6 @@
 +++
 [extra]
-title = "Developer"
+title = "Full Stack Developer"
 
 interests = [
 "Data Science",
