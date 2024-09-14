@@ -10,9 +10,9 @@ interests = [
 ]
 
 [[extra.education.courses]]
-course = "Computer Science (incomplete)"
+course = "Computer Science"
 institution = "Federal University of Viçosa, Brazil"
-year = 2018
+year = "-"
 
 [[extra.avatar_icons]]
 icon = "github"

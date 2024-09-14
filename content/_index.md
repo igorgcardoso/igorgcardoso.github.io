@@ -13,9 +13,9 @@ interests = [
 ]
 
 [[extra.education.courses]]
-course = "Ciência da Computação (incompleto)"
+course = "Ciência da Computação"
 institution = "Universidade Federal de Viçosa, Brasil"
-year = 2018
+year = "-"
 
 [[extra.avatar_icons]]
 icon = "github"
