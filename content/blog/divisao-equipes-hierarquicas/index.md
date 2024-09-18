@@ -74,13 +74,13 @@ pub fn get_height(trees: &HashMap<i32, Vec<usize>>, start: usize) -> u32 {
     let mut visited = HashSet::new();
     let mut highest_height = 0;
     let mut stack = vec![(start, 1)];
-    while let Some((capybara, height)) = stack.pop() {
+    while let Some((member, height)) = stack.pop() {
         if height > highest_height {
             highest_height = height;
         }
-        if !visited.contains(&capybara) {
-            visited.insert(capybara);
-            for child in trees.get(&(capybara as i32)).unwrap_or(&Vec::new()) {
+        if !visited.contains(&member) {
+            visited.insert(member);
+            for child in trees.get(&(member as i32)).unwrap_or(&Vec::new()) {
                 stack.push((*child, height + 1));
             }
         }
@@ -93,31 +93,31 @@ fn main() {
     // lê o número de capivaras
     let mut input = String::new();
     std::io::stdin().read_line(&mut input).unwrap();
-    let num_capybaras = input.trim().parse::<usize>().unwrap();
+    let num_members = input.trim().parse::<usize>().unwrap();
 
     // lê os superiores de cada capivara
-    let mut superiors = Vec::with_capacity(num_capybaras);
+    let mut superiors = Vec::with_capacity(num_members);
     let mut input = String::new();
-    for _ in 0..num_capybaras {
+    for _ in 0..num_members {
         std::io::stdin().read_line(&mut input).unwrap();
-        let capybara = input.trim().parse::<i32>().unwrap();
-        superiors.push(capybara);
+        let member = input.trim().parse::<i32>().unwrap();
+        superiors.push(member);
         input.clear();
     }
 
     // cria a floresta
     let mut trees: HashMap<i32, Vec<usize>> = HashMap::new();
-    for (capybara, superior) in superiors.iter().enumerate() {
+    for (member, superior) in superiors.iter().enumerate() {
         trees
             .entry(*superior)
             .or_insert(Vec::new())
-            .push(capybara + 1);
+            .push(member + 1);
     }
 
     // calcula a altura da maior árvore
     let mut max_height = 0;
-    for capybara in trees[&-1].clone() {
-        let height = get_height(&trees, capybara);
+    for member in trees[&-1].clone() {
+        let height = get_height(&trees, member);
         if height > max_height {
             max_height = height;
         }
@@ -137,13 +137,13 @@ pub fn get_height(trees: &HashMap<i32, Vec<usize>>, start: usize) -> u32 {
     let mut visited = HashSet::new();
     let mut highest_height = 0;
     let mut stack = vec![(start, 1)];
-    while let Some((capybara, height)) = stack.pop() {
+    while let Some((member, height)) = stack.pop() {
         if height > highest_height {
             highest_height = height;
         }
-        if !visited.contains(&capybara) {
-            visited.insert(capybara);
-            for child in trees.get(&(capybara as i32)).unwrap_or(&Vec::new()) {
+        if !visited.contains(&member) {
+            visited.insert(member);
+            for child in trees.get(&(member as i32)).unwrap_or(&Vec::new()) {
                 stack.push((*child, height + 1));
             }
         }
@@ -156,26 +156,26 @@ fn main() {
     // lê o número de capivaras
     let mut input = String::new();
     std::io::stdin().read_line(&mut input).unwrap();
-    let num_capybaras = input.trim().parse::<usize>().unwrap();
+    let num_members = input.trim().parse::<usize>().unwrap();
 
     // cria a floresta
     // nesta versão criamos a floresta simultaneamente com a leitura
     let mut trees: HashMap<i32, Vec<usize>> = HashMap::new();
     let mut input = String::new();
-    for capybara_idx in 0..num_capybaras {
+    for member_idx in 0..num_members {
         std::io::stdin().read_line(&mut input).unwrap();
         let superior = input.trim().parse::<i32>().unwrap();
         trees
             .entry(superior)
             .or_insert(Vec::new())
-            .push(capybara_idx + 1);
+            .push(member_idx + 1);
         input.clear();
     }
 
     // calcula a altura da maior árvore
     let mut max_height = 0;
-    for capybara in trees[&-1].clone() {
-        let height = get_height(&trees, capybara);
+    for member in trees[&-1].clone() {
+        let height = get_height(&trees, member);
         if height > max_height {
             max_height = height;
         }
